@@ -1,15 +1,14 @@
 <?php
 
 declare(strict_types=1);
-// include_once '../includes/class_autorelead.inc.php';
-// include_once '../includes/test_input.inc.php';
+include_once  "./includes/class_autorelead.inc.php";
+include_once "./includes/test_input.inc.php";
 
 class Ctrl
 {
 
     public static function signIn()
     {
-        session_start();
         if (isset($_SESSION['username'])) {
             header('location:./index.php');
             exit;
@@ -26,17 +25,19 @@ class Ctrl
             }
 
             if (empty($errors)) {
+                session_start();
                 $_SESSION['username'] = $username;
+                header('location:./index.php');
             } else {
+
                 $viewElement = new View();
-                $viewElement->printErrors($errors);
+                echo $viewElement->printErrors($errors);
             }
         }
     }
 
     public static function signUp()
     {
-        session_start();
         if (isset($_SESSION['username'])) {
             header('location:./index.php');
             exit;
@@ -60,11 +61,11 @@ class Ctrl
 
             if (empty($errors)) {
                 $dbModel->addUser($email, $username, $password);
-
+                session_start();
                 $_SESSION['username'] = $username;
             } else {
                 $viewElement = new View();
-                $viewElement->printErrors($errors);
+                echo  $viewElement->printErrors($errors);
             }
         }
     }
@@ -73,6 +74,7 @@ class Ctrl
         session_start();
         session_unset();
         session_destroy();
+        echo 'logout';
         header('location:./login.php');
     }
 

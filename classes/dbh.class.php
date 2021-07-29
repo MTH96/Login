@@ -1,9 +1,6 @@
 <?php
 
-// $conn = mysqli_connect('localhost', "mahmoud", "1242", "Login", "8806");
-// if (!$conn) {
-//     echo "error: " . mysqli_connect_error();
-// }
+
 
 class Dbh
 {

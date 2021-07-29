@@ -7,15 +7,17 @@ class View
 
     public function printErrors(array $errors)
     {
-        echo "<script>";
-
-        echo '$("#msg").addClass("error");';
-        echo '$("#msg").html(';
+        $result = '';
+        $result .= "<script>";
+        $result .= "$(document).ready(function(){";
+        $result .= '$("#msg").addClass("error");';
+        $result .= '$("#msg").html("';
         foreach ($errors as $key => $error)
-            echo $key . ": " . $error . "<br>";
+            $result .= "<strong> " . $key . ":</strong> " . $error . "<br> ";
 
-        echo ");";
-
-        echo "</script>";
+        $result .= '");';
+        $result .= "});";
+        $result .= "</script>";
+        return $result;
     }
 }

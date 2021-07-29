@@ -1,8 +1,7 @@
 <?php
 session_start();
 ini_set('display_errors', -1);
-include './includes/class_autorelead.inc.php';
-Ctrl::signIn();
+
 
 ?>
 
@@ -20,14 +19,19 @@ Ctrl::signIn();
 
 <body>
     <h1> Log In </h1>
-    <form action='#' name="login" method="post">
+    <form action="#" method="post">
         <input type="text" name="username" placeholder="Username" required autocomplete="username" />
         <br> <input type="password" name="password" placeholder="Password" required autocomplete="current-password" />
-        <br> <input type='submit' value="LogIn" value="submit">
+        <br> <input type='submit' value="LogIn" name="submit">
     </form>
     <p>Not register yet?<a href="./register.php">Register Here</a></p>
     <p id="msg"></p>
 
+
+    <?php
+    include('./includes/class_autorelead.inc.php');
+    Ctrl::signIn();
+    ?>
 </body>
 
 </html>

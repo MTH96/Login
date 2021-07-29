@@ -2,9 +2,6 @@
 session_start();
 ini_set('display_errors', -1);
 
-include './includes/class_autorelead.inc.php';
-Ctrl::signUp();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,17 +19,21 @@ Ctrl::signUp();
 <body>
 
     <h1> Register </h1>
-    <form name="login" method="post">
+    <form action="#" method="post">
         <input type="text" name="username" placeholder="Username" required />
         <br> <input type="email" name="email" placeholder="email" required />
         <br> <input type="password" name="password" placeholder="Password" required />
-        <br> <input type="submit" name="submit" value="SignUp">
+        <br> <input type="submit" value="SignUp" name="submit">
     </form>
     <p>have an account?<a href="./index.php">Login Here</a></p>
 
     <p id="msg"></p>
 
+    <?php
+    include './includes/class_autorelead.inc.php';
+    Ctrl::signUp();
 
+    ?>
 </body>
 
 </html>
